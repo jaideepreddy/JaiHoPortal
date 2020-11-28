@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@color/splashscreen_bg"/>
+
+    <item
+        android:width="240dp"
+        android:height="240dp"
+        android:background="@color/splashscreen_bg"
+        android:drawable="@mipmap/jaiho_logo"
+        android:gravity="center" />
+
+</layer-list>
