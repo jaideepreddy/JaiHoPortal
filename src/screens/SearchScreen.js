@@ -14,7 +14,8 @@ import {
   Modal,
   PermissionsAndroid,
   FlatList,
-  Linking
+  Linking,
+  SafeAreaView
 } from 'react-native';
 import colors from './../styles/colors';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
@@ -66,134 +67,134 @@ const requestAudioPermission = async () => {
 
 const items = [
   // this is the parent or 'item'
-  {
-    name: 'Andhra Pradesh',
-    id: 4,
-    // these are the children or 'sub items'
-    children: [
-      {
-        name: 'Chittor',
-        id: 28,
-      },
-      {
-        name: 'Kadapa',
-        id: 29,
-      },
-      {
-        name: 'Vijayawada',
-        id: 30,
-      },
-      {
-        name: 'Vizag',
-        id: 31,
-      },
-    ],
-  },
+  // {
+  //   name: 'Andhra Pradesh',
+  //   id: 4,
+  //   // these are the children or 'sub items'
+  //   children: [
+  //     {
+  //       name: 'Chittor',
+  //       id: 28,
+  //     },
+  //     {
+  //       name: 'Kadapa',
+  //       id: 29,
+  //     },
+  //     {
+  //       name: 'Vijayawada',
+  //       id: 30,
+  //     },
+  //     {
+  //       name: 'Vizag',
+  //       id: 31,
+  //     },
+  //   ],
+  // },
   {
     name: 'Karnataka',
     id: 3,
     // these are the children or 'sub items'
     children: [
-      {
-        name: 'Tumkur',
-        id: 50,
-      },
+      // {
+      //   name: 'Tumkur',
+      //   id: 50,
+      // },
       {
         name: 'Bangalore',
         id: 51,
       },
-      {
-        name: 'Bangalore Rural',
-        id: 52,
-      },
-      {
-        name: 'Gokarna',
-        id: 53,
-      },
-      {
-        name: 'Hasan',
-        id: 54,
-      },
+      // {
+      //   name: 'Bangalore Rural',
+      //   id: 52,
+      // },
+      // {
+      //   name: 'Gokarna',
+      //   id: 53,
+      // },
+      // {
+      //   name: 'Hasan',
+      //   id: 54,
+      // },
     ],
   },
-  {
-    name: 'Telangana',
-    id: 0,
-    // these are the children or 'sub items'
-    children: [
-      {
-        name: 'Hyderabad',
-        id: 10,
-      },
-      {
-        name: 'Khammam',
-        id: 17,
-      },
-      {
-        name: 'Warangal',
-        id: 13,
-      },
-      {
-        name: 'Nizamabad',
-        id: 14,
-      },
-      {
-        name: 'Kama Reddy',
-        id: 15,
-      },
-      {
-        name: 'Sanga Reddy',
-        id: 16,
-      },
-      {
-        name: 'Medak',
-        id: 16,
-      },
-      {
-        name: 'Medchal',
-        id: 16,
-      },
-      {
-        name: 'Mahabudnagar',
-        id: 16,
-      },
-      {
-        name: 'Jedcharla',
-        id: 16,
-      },
-      {
-        name: 'Shadnagar',
-        id: 16,
-      },
-    ],
-  },
-  {
-    name: 'Maharastra',
-    id: 1,
-    // these are the children or 'sub items'
-    children: [
-      {
-        name: 'Mumbai',
-        id: 17,
-      },
-      {
-        name: 'Shirdi',
-        id: 18,
-      },
-      {
-        name: 'Nanded',
-        id: 19,
-      },
-      {
-        name: 'Sagar',
-        id: 20,
-      },
-      {
-        name: 'Pune',
-        id: 21,
-      },
-    ],
-  },
+  // {
+  //   name: 'Telangana',
+  //   id: 0,
+  //   // these are the children or 'sub items'
+  //   children: [
+  //     {
+  //       name: 'Hyderabad',
+  //       id: 10,
+  //     },
+  //     {
+  //       name: 'Khammam',
+  //       id: 17,
+  //     },
+  //     {
+  //       name: 'Warangal',
+  //       id: 13,
+  //     },
+  //     {
+  //       name: 'Nizamabad',
+  //       id: 14,
+  //     },
+  //     {
+  //       name: 'Kama Reddy',
+  //       id: 15,
+  //     },
+  //     {
+  //       name: 'Sanga Reddy',
+  //       id: 16,
+  //     },
+  //     {
+  //       name: 'Medak',
+  //       id: 16,
+  //     },
+  //     {
+  //       name: 'Medchal',
+  //       id: 16,
+  //     },
+  //     {
+  //       name: 'Mahabudnagar',
+  //       id: 16,
+  //     },
+  //     {
+  //       name: 'Jedcharla',
+  //       id: 16,
+  //     },
+  //     {
+  //       name: 'Shadnagar',
+  //       id: 16,
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: 'Maharastra',
+  //   id: 1,
+  //   // these are the children or 'sub items'
+  //   children: [
+  //     {
+  //       name: 'Mumbai',
+  //       id: 17,
+  //     },
+  //     {
+  //       name: 'Shirdi',
+  //       id: 18,
+  //     },
+  //     {
+  //       name: 'Nanded',
+  //       id: 19,
+  //     },
+  //     {
+  //       name: 'Sagar',
+  //       id: 20,
+  //     },
+  //     {
+  //       name: 'Pune',
+  //       id: 21,
+  //     },
+  //   ],
+  // },
 ];
 
 export default class SearchScreen extends Component {
@@ -477,7 +478,7 @@ export default class SearchScreen extends Component {
       setTimeout(()=>{
         this.setState({ searchResults: []});
       }, 100);
-    }else if(input.length > 1){
+    }else if(input.length > 4){
     return new Promise(async (resolve) => {
       this.setState({loadingVisible: true});
       let results = [];
@@ -554,11 +555,12 @@ export default class SearchScreen extends Component {
     );
 
     return (
+      
       <KeyboardAvoidingView
         style={styles.wrapper}
         behavior={Platform.OS === 'ios' ? 'padding' : null}
         keyboardVerticalOffset={Platform.select({ ios: 0, android: 500 })}>
-        
+        <SafeAreaView>
           <View style={{display: 'flex', }}>
           <View style={{display: 'flex', flexDirection:'row',}}>
           <View style={{display:'flex', flexDirection:'row' }}>
@@ -584,7 +586,7 @@ export default class SearchScreen extends Component {
                     style={{padding: 4}}
                     size={21}
                   />
-        {/* <SectionedMultiSelect
+        <SectionedMultiSelect
           iconRenderer={
             <MaterialIcon
               name={'keyboard-arrow-down'}
@@ -655,12 +657,12 @@ export default class SearchScreen extends Component {
           items={items}
           uniqueKey="id"
           subKey="children"
-          noResultsComponent={<Text style={{ textAlign: 'center', marginTop: 16, fontSize: 16 }}>Sorry, No Workspaces</Text>}
+          noResultsComponent={<Text style={{ textAlign: 'center', marginTop: 16, fontSize: 16 }}>Sorry, No Results</Text>}
           selectText="Bangalore"
           readOnlyHeadings={true}
           onSelectedItemsChange={this.onSelectedItemsChange}
           selectedItems={this.state.selectedItems}
-        /> */}
+        />
         </View>
       </View>
       </View>
@@ -795,7 +797,9 @@ export default class SearchScreen extends Component {
             {/* </View> */}
           </ScrollView>
         </View>
+        </SafeAreaView>
       </KeyboardAvoidingView>
+      
     );
   }
 }

@@ -22,6 +22,7 @@ class Expandable_ListView extends Component {
  
       layout_Height: 0,
       loadingVisible: true,
+      showNoResults: false,
  
     }
   }
@@ -179,7 +180,7 @@ export default class YellowPagesScreen extends Component {
 
   getEntityResults(id, subCat){
     console.log('id '+ id);
-    let elkURl = "hhttps://elastic.jaiho.com/businessentity/_search?size=500";
+    let elkURl = "https://elastic.jaiho.com/businessentity/_search?size=500";
     return new Promise(async (resolve) => {
       let results = [];
       results = await Axios.post(elkURl,
@@ -205,6 +206,7 @@ export default class YellowPagesScreen extends Component {
 
         this.setState({ categoryResults: objSelectedEntity});
         this.setState({ loadingVisible: false});
+        this.setState({ showNoResults : true });
         console.log('Results '+JSON.stringify(objSelectedEntity));
       }, 200);
       
@@ -252,8 +254,9 @@ export default class YellowPagesScreen extends Component {
           } */}
           <ScrollView contentContainerStyle={{ paddingVertical: 5 }}>
           <Loader modalVisible={this.state.loadingVisible} animationType="fade" />
-{
-  this.state.categoryResults.length > 0 ? 
+
+{ this.state.showNoResults ? 
+  this.state.categoryResults.length > 1 ? 
             this.state.categoryResults.map((item, key) =>
               (
                 
@@ -278,12 +281,15 @@ export default class YellowPagesScreen extends Component {
           
           )) : 
           
-            
-              <ImageBackground
-        style={styles.container}>
+          <Text style={{alignContent: 'center', textAlign:'center', fontSize:18}}>
+            Sorry! No Results Found
+          </Text> 
+            : null
+      //         <ImageBackground
+      //   style={styles.container}>
         
-        <Image source={require('./../images/noresults.png')} />
-      </ImageBackground>
+      //   <Image source={require('./../images/noresults.png')} />
+      // </ImageBackground>
           
           }
        

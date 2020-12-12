@@ -54,11 +54,7 @@ export default class ForgotPasswordScreen extends Component {
         behavior={Platform.OS === 'ios' ? 'padding' : null}
         keyboardVerticalOffset={Platform.select({ios: 0, android: 500})}
         style={styles.wrapper}>
-        <NavBarButton
-          handleButtonPress={() => this.props.navigation.goBack()}
-          location="left"
-          icon={<Icon name="angle-left" color={colors.green} size={38} />}
-        />
+        
         <View style={styles.form}>
           <Text style={styles.ForgotPasswordHeading}>
             Forgot your password?

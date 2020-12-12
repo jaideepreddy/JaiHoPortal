@@ -8,11 +8,13 @@ import {
   Platform,
   TouchableHighlight,
   Linking,
+  SafeAreaView
 } from 'react-native';
 import colors from './../styles/colors';
 import StoryItems from './../components/StoryItems';
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import Axios from 'axios';
+import Loader from './../components/Loader';
 
 export default class NewsScreen extends Component {
 
@@ -20,6 +22,7 @@ export default class NewsScreen extends Component {
     super();
     this.state = {
       newsList: [],
+      loadingVisible: true,
     }
   }
 
@@ -32,6 +35,7 @@ export default class NewsScreen extends Component {
         }
       }
     }).then((data) => {
+      this.setState({loadingVisible: false });
         console.log('news data'+JSON.stringify(data.data.hits.hits));
         this.setState({ newsList: data.data.hits.hits });
     }).catch(() => {});
@@ -48,9 +52,11 @@ export default class NewsScreen extends Component {
         style={styles.wrapper}
         behavior={Platform.OS === 'ios' ? 'padding' : null}
         keyboardVerticalOffset={Platform.select({ ios: 0, android: 500 })}>
+           <SafeAreaView style={{backgroundColor: colors.violet, marginBottom: 48}}>
           <Card style={{ display:'flex', width:'100%'}}>
             <Card.Title title="News" style={{backgroundColor:colors.violet,}} titleStyle={{color:colors.white}}/>
           </Card>
+          <Loader modalVisible={this.state.loadingVisible} animationType="fade" />
           <ScrollView style={styles.scrollView}>
           {this.state.newsList.map((news,key)=>
           <View style={{padding :8}}>
@@ -68,6 +74,7 @@ export default class NewsScreen extends Component {
   
   
           </ScrollView>
+          </SafeAreaView>
       </KeyboardAvoidingView>
     );
   }
@@ -85,6 +92,7 @@ const styles = StyleSheet.create({
     paddingLeft: 24,
     paddingRight: 24,
   },
+  
   avoidView: {
     paddingLeft: 30,
     paddingRight: 30,

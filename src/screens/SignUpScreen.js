@@ -130,7 +130,7 @@ export default class SignUpScreen extends Component {
                 }
         }else{
           this.setState({ dialogVisible: true,  
-            dialogHeaderText: "Account Creation Unsuccessfull",
+            dialogHeaderText: "Account Creation Failed!",
             desciptionText:"Please try again", 
             firstButtonLabel: "Ok",
             emailAddress: '',
@@ -310,6 +310,7 @@ export default class SignUpScreen extends Component {
                 }}
                 inputStyle={{fontSize: 16}}
                 placeholder="Username"
+                placeholderTextColor="#cccccc" 
                 autoCapitalize="none"
                 autoCorrect={false}
                 keyboardType="email-address"
@@ -340,6 +341,7 @@ export default class SignUpScreen extends Component {
                 }}
                 inputStyle={{fontSize: 16}}
                 placeholder="Email"
+                placeholderTextColor="#cccccc" 
                 autoCapitalize="none"
                 autoCorrect={false}
                 keyboardType="email-address"
@@ -370,6 +372,7 @@ export default class SignUpScreen extends Component {
                 }}
                 inputStyle={{fontSize: 16}}
                 placeholder="Password"
+                placeholderTextColor="#cccccc" 
                 autoCapitalize="none"
                 secureTextEntry={true}
                 autoCorrect={false}
@@ -401,6 +404,7 @@ export default class SignUpScreen extends Component {
                 }}
                 inputStyle={{fontSize: 16}}
                 placeholder="Confirm Password"
+                placeholderTextColor="#cccccc" 
                 autoCapitalize="none"
                 keyboardAppearance="light"
                 onChangeText={this.handleConfirmPasswordChange}
@@ -434,6 +438,7 @@ export default class SignUpScreen extends Component {
                 }}
                 inputStyle={{fontSize: 16}}
                 placeholder="City"
+                placeholderTextColor="#cccccc" 
                 autoCapitalize="none"
                 keyboardAppearance="light"
                 autoCorrect={false}
@@ -467,6 +472,7 @@ export default class SignUpScreen extends Component {
                 }}
                 inputStyle={{fontSize: 16}}
                 placeholder="State"
+                placeholderTextColor="#cccccc" 
                 autoCapitalize="none"
                 keyboardAppearance="light"
                 autoCorrect={false}
@@ -501,6 +507,7 @@ export default class SignUpScreen extends Component {
                 }}
                 inputStyle={{fontSize: 16}}
                 placeholder="Country"
+                placeholderTextColor="#cccccc" 
                 autoCapitalize="none"
                 keyboardAppearance="light"
                 autoCorrect={false}

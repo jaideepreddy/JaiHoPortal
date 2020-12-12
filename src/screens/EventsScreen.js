@@ -7,11 +7,14 @@ import {
   KeyboardAvoidingView,
   Platform,
   TouchableHighlight,
+  SafeAreaView,
+  StatusBar
 } from 'react-native';
 import colors from './../styles/colors';
 import {Input, Icon, ListItem} from 'react-native-elements';
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import Axios from 'axios';
+import Loader from './../components/Loader';
 
 export default class EventsScreen extends Component {
 
@@ -20,6 +23,8 @@ export default class EventsScreen extends Component {
 
     this.state = {
       eventsList : [],
+      loadingVisible: true,
+      showNoResults: false,
     }
   }
 
@@ -38,7 +43,8 @@ export default class EventsScreen extends Component {
         for (var i = 0; i < categoriess.length; i++) {
           titleList.push(categoriess[i].title);
         }
-
+        this.setState({ loadingVisible: false});
+        this.setState({ showNoResults : true });
         console.log("categoriess " + JSON.stringify(categoriess));
         //setCategories(categoriess);
         this.setState({ eventsList: categoriess});
@@ -63,6 +69,7 @@ export default class EventsScreen extends Component {
       },
     })
       .then((data) => {
+       
         console.log("events " + JSON.stringify(data.data.hits.hits));
         var tableData = data.data.hits.hits;
         var categoriesLists = [];
@@ -86,6 +93,7 @@ export default class EventsScreen extends Component {
         });
         console.log("categoriesLists " + JSON.stringify(categoriesLists));
         console.log("eventsData " + JSON.stringify(eventsData));
+        
         setcategoriesList(categoriesLists);
         setEvents(eventsData);
       })
@@ -102,12 +110,16 @@ export default class EventsScreen extends Component {
         style={styles.wrapper}
         behavior={Platform.OS === 'ios' ? 'padding' : null}
         keyboardVerticalOffset={Platform.select({ios: 0, android: 500})}>
+          <SafeAreaView style={{backgroundColor: colors.violet}}>
           <Card style={{ display:'flex', width:'100%'}}>
             <Card.Title title="Events" style={{backgroundColor:colors.violet,}} titleStyle={{color:colors.white}}/>
           </Card>
-          <ScrollView style={styles.scrollView}>
           
-          {this.state.eventsList
+          <ScrollView style={styles.scrollView}>
+          <Loader modalVisible={this.state.loadingVisible} animationType="fade" />
+          { this.state.showNoResults ? 
+          this.state.eventsList.length > 1 ? 
+          this.state.eventsList
               .sort(function(a, b) {
                 if(a.title.toLowerCase() < b.title.toLowerCase()) return -1;
                 if(a.title.toLowerCase() > b.title.toLowerCase()) return 1;
@@ -125,7 +137,14 @@ export default class EventsScreen extends Component {
               containerStyle={{ marginLeft: -15, width: 20 }}
             />}
           />
-          )}
+          )
+          : 
+          
+          <Text style={{alignContent: 'center', textAlign:'center', fontSize:18}}>
+            Sorry! No Results Found
+          </Text> 
+            : null
+        }
           {/* <ListItem
             leftAvatar={{ source: { uri: './' } }}
             title={'Movies'}
@@ -175,6 +194,7 @@ export default class EventsScreen extends Component {
             />}
           /> */}
           </ScrollView>
+          </SafeAreaView>
       </KeyboardAvoidingView>
     );
   }

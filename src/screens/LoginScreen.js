@@ -237,6 +237,7 @@ export default class LoginScreen extends Component {
                 }}
                 inputStyle={{fontSize: 16}}
                 placeholder="Email"
+                placeholderTextColor="#cccccc" 
                 autoCapitalize="none"
                 autoCorrect={false}
                 keyboardType="email-address"
@@ -267,6 +268,7 @@ export default class LoginScreen extends Component {
                 }}
                 inputStyle={{fontSize: 16}}
                 placeholder="Password"
+                placeholderTextColor="#cccccc" 
                 autoCapitalize="none"
                 secureTextEntry={true}
                 autoCorrect={false}

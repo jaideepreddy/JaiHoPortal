@@ -15,6 +15,7 @@ import StoryItems from './../components/StoryItems';
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import Axios from 'axios';
 import {Input, Icon, ListItem} from 'react-native-elements';
+import Loader from './../components/Loader';
 
 export default class EventsDescriptionPage extends Component {
 
@@ -24,6 +25,8 @@ export default class EventsDescriptionPage extends Component {
         this.state = {
           eventsList: [],
           category: '',
+          loadingVisible: true,
+          showNoResults: false,
         }
         
     }
@@ -49,7 +52,7 @@ export default class EventsDescriptionPage extends Component {
           var tableData = data.data.hits.hits;
           var categoriesLists = [];
           var eventsData = [];
-  
+          
           for (var i = 0; i < tableData.length; i++) {
             eventsData.push(tableData[i]._source);
           }
@@ -65,6 +68,8 @@ export default class EventsDescriptionPage extends Component {
           console.log("categoriesLists " + JSON.stringify(categoriesLists));
           //console.log("eventsData " + JSON.stringify(eventsData));
           this.setState({eventsList: categoriesLists});
+          this.setState({ loadingVisible: false});
+          this.setState({ showNoResults : true });
           // setcategoriesList(categoriesLists);
           // setEvents(eventsData);
         })
@@ -88,9 +93,9 @@ export default class EventsDescriptionPage extends Component {
         keyboardVerticalOffset={Platform.select({ ios: 0, android: 500 })}>
           <ScrollView>
           
-
-          {
-  this.state.eventsList.length > 0 ? 
+          <Loader modalVisible={this.state.loadingVisible} animationType="fade" />
+          { this.state.showNoResults ? 
+          this.state.eventsList.length >= 1 ? 
             this.state.eventsList.map((item, key) =>
               (
                 
@@ -114,12 +119,18 @@ export default class EventsDescriptionPage extends Component {
           </View>
          
           )) : 
-          <ImageBackground
-        style={styles.container}>
+      //     <ImageBackground
+      //   style={styles.container}>
         
-        <Image source={require('./../images/noresults.png')} />
-      </ImageBackground>
-          }
+      //   <Image source={require('./../images/noresults.png')} />
+      // </ImageBackground>
+      //     : 
+          
+          <Text style={{alignContent: 'center', textAlign:'center', fontSize:18, marginTop: 24}}>
+            Sorry! No Results Found
+          </Text> 
+            : null
+        }
           
           {/* {this.state.eventsList.map((events)=>
           

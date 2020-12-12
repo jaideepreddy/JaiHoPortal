@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View} from 'react-native';
+import {View, SafeAreaView} from 'react-native';
 import {List} from 'react-native-paper';
 import {Input, Icon, ListItem, Avatar} from 'react-native-elements';
 import colors from './../styles/colors';
@@ -68,10 +68,12 @@ const YellowPages = ({ navigation }) => {
   }, []);
 
   return (
+    
     <View style={{flex: 1, backgroundColor: colors.white,}}>
        {/* <Card style={{ display:'flex', width:'100%'}}>
             <Card.Title title="Yellow Pages" style={{backgroundColor:colors.violet,}} titleStyle={{color:colors.white}}/>
           </Card> */}
+          <SafeAreaView>
           <Searchbar
       placeholder="Search Yellow pages"
       style={{backgroundColor: colors.gray05, marginLeft:8, marginRight: 8, marginTop:8, borderRadius: 50}}
@@ -127,8 +129,9 @@ const YellowPages = ({ navigation }) => {
             </View>
           ))}
         </ScrollView>
-     
+        </SafeAreaView>
     </View>
+    
   );
 };
 

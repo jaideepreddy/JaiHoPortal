@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Switch, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, Switch, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { Avatar, ListItem } from 'react-native-elements';
 import PropTypes from 'prop-types';
 
@@ -8,6 +8,7 @@ import Chevron from './../components/Chevron';
 import InfoText from './../components/InfoText';
 import Colors from './../styles/colors';
 import DBPreference from './../utils/DBPReference';
+import colors from './../styles/colors';
 
 const styles = StyleSheet.create({
   scroll: {
@@ -133,6 +134,7 @@ getUsernameAndEmail(){
   render() {
     
     return (
+      <SafeAreaView style={{backgroundColor: colors.violet, marginBottom: 72}}>
       <ScrollView style={styles.scroll}>
         {this.state.loginStatus == false ? null : 
         <View style={styles.userRow}>
@@ -368,6 +370,7 @@ getUsernameAndEmail(){
           /> */}
         </View>
       </ScrollView>
+      </SafeAreaView>
     )
   }
 }

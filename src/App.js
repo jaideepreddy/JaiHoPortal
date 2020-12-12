@@ -188,7 +188,7 @@ class NavigationDrawerStructure extends React.Component {
 
 const navigationOptionsWithBackButton = ({navigation}) => ({
   gesturesEnabled: true,
-  //title: 'Entertainment',
+  title: '',
   //headerTintColor: 'white',
   headerStyle: {
      //backgroundColor: ,
