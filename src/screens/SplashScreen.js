@@ -28,7 +28,7 @@ export default class SplashScrren extends Component {
                 RootedSplashScreen.hide();
                 this.props.navigation.navigate('Welcome');
             }
-        }, 200);
+        }, 400);
       }
       
       getLoginStatus(){

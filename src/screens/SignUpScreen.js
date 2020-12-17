@@ -67,28 +67,32 @@ export default class SignUpScreen extends Component {
 
     console.warn('email' + emailAddress);
     console.warn('country' + country);
+    console.warn('phoneNumber' + phoneNumber);
+    console.warn('city' + city);
+    console.warn('name' + name);
 
     fetch(Constants.JaiHo_URL_Endpoint + 'Register', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        //'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         name: name,
         email: emailAddress,
         phone: phoneNumber,
         city: city,
-        state: '',
+        state: state,
         country: country,
         password: password,
-        confirmPassword: confirmPassword,
+        confirmPassword: confirmPassword
       }),
     })
       .then((response) => response.json())
       .then((responseJson) => {
         var loginResponse = JSON.stringify(responseJson);
         console.warn('loginResponse' + loginResponse);
+        
         this.setState({formValid: true, loadingVisible: false});
         if (responseJson.isSuccessStatusCode == true) {
           global.USERNAME = this.state.name;

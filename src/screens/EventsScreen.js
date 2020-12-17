@@ -110,12 +110,12 @@ export default class EventsScreen extends Component {
         style={styles.wrapper}
         behavior={Platform.OS === 'ios' ? 'padding' : null}
         keyboardVerticalOffset={Platform.select({ios: 0, android: 500})}>
-          <SafeAreaView style={{backgroundColor: colors.violet}}>
+          <SafeAreaView style={{backgroundColor: colors.violet, marginBottom: 48}}>
           <Card style={{ display:'flex', width:'100%'}}>
             <Card.Title title="Events" style={{backgroundColor:colors.violet,}} titleStyle={{color:colors.white}}/>
           </Card>
           
-          <ScrollView style={styles.scrollView}>
+          <ScrollView style={{display:'flex', height: '100%', backgroundColor: colors.white, }}>
           <Loader modalVisible={this.state.loadingVisible} animationType="fade" />
           { this.state.showNoResults ? 
           this.state.eventsList.length > 1 ? 
