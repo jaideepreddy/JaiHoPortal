@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "jaihologo-1.png",
+      "filename" : "SplashIcon_200x200.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "jaihologo-2.png",
+      "filename" : "SplashIcon_400x400.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "jaihologo-3.png",
+      "filename" : "SplashIcon_600x600.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
