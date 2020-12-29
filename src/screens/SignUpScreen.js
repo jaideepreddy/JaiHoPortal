@@ -69,18 +69,21 @@ export default class SignUpScreen extends Component {
     console.warn('country' + country);
     console.warn('phoneNumber' + phoneNumber);
     console.warn('city' + city);
+    console.warn('state' + state);
     console.warn('name' + name);
+    console.warn('password' + password);
+    console.warn('confirmPassword' + confirmPassword);
 
     fetch(Constants.JaiHo_URL_Endpoint + 'Register', {
       method: 'POST',
       headers: {
-        Accept: 'application/json',
-        //'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         name: name,
-        email: emailAddress,
         phone: phoneNumber,
+        email: emailAddress,
         city: city,
         state: state,
         country: country,
@@ -321,6 +324,37 @@ export default class SignUpScreen extends Component {
                 returnKeyType="next"
                 ref={(input) => (this.usernameInput = input)}
                 onChangeText={this.handleNameChange}
+                onSubmitEditing={() => {
+                  this.phoneNumberInput.focus();
+                }}
+              />
+              <Input
+                leftIcon={
+                  <Icon
+                    name="phone"
+                    type="simple-line-icon"
+                    color={colors.violet}
+                    size={21}
+                  />
+                }
+                inputContainerStyle={{
+                  borderWidth: 1,
+                  borderRadius: 8,
+                  paddingLeft: 24,
+                  height: 44,
+                }}
+                leftIconContainerStyle={{
+                  marginRight: 10,
+                }}
+                inputStyle={{fontSize: 16}}
+                placeholder="Mobile Number"
+                placeholderTextColor="#cccccc" 
+                autoCapitalize="none"
+                autoCorrect={false}
+                keyboardType="phone-pad"
+                returnKeyType="next"
+                ref={(input) => (this.phoneNumberInput = input)}
+                onChangeText={this.handlePhoneNumberChange}
                 onSubmitEditing={() => {
                   this.email2Input.focus();
                 }}

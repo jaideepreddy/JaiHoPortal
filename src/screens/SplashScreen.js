@@ -20,26 +20,20 @@ export default class SplashScrren extends Component {
     UNSAFE_componentWillMount() {
         this.getLoginStatus();
         RootedSplashScreen.show();
-        setTimeout(() => {
-            if(this.state.loginStatus == true){
-                RootedSplashScreen.hide();
-                this.props.navigation.navigate('Search');
-            }else{
-                RootedSplashScreen.hide();
-                this.props.navigation.navigate('Welcome');
-            }
-        }, 400);
       }
       
       getLoginStatus(){
         DBPreference.retrieveData(
           DBPreference.LOGIN_STATUS,
           (error, result) => {
-            console.warn(result);
+            console.warn('result'+result);
             if(result == "true"){
               this.setState({ loginStatus: true});
+              RootedSplashScreen.hide();
+              this.props.navigation.navigate('Search');
             }else{
-              this.setState({ loginStatus: false});
+                RootedSplashScreen.hide();
+                this.props.navigation.navigate('Welcome');
             }
           }
         );

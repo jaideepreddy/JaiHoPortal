@@ -13,7 +13,8 @@ import {
   ImageBackground,
   StyleSheet,
   StatusBar,
-  Image
+  Image,
+  Platform
 } from 'react-native';
 import React from 'react';
 import WelcomeScreen from './screens/WelcomeScreen';
@@ -139,9 +140,11 @@ function Search() {
                 marginBottom: 4,
                 //marginTop: 4,
                 color: color,
+                alignItems: 'center',
+                textAlign: 'center'
               }}
               color={color}>
-              {labelName}
+              {Platform.isPad ? '' : labelName}
             </Text>
           );
         },
@@ -249,10 +252,12 @@ export default class App extends React.Component {
     DBPreference.retrieveData(
       DBPreference.LOGIN_STATUS,
       (error, result) => {
-        console.warn(result);
+        console.warn('result'+result);
         if(result == "true"){
-          this.setState({ loadScreen: true});
+          console.warn('result true');
           this.setState({ loginStatus: true});
+          this.setState({ loadScreen: true});
+          
           RootedSplashScreen.hide();
         }else{
           this.setState({ loadScreen: true});
