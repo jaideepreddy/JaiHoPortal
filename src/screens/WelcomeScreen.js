@@ -25,7 +25,7 @@ export default class WelcomeScreen extends Component {
                 source={require('./../images/jaiho_logo.png')}
               />
               <Text style={styles.welcomeText}>Welcome to JaiHo</Text>
-              <RoundedButton
+              {/* <RoundedButton
                 text="Connect to Google"
                 textColor={colors.white}
                 backgroundColor={colors.violet}
@@ -33,7 +33,7 @@ export default class WelcomeScreen extends Component {
                   <Icon name="google" size={18} style={styles.facebookIcon} />
                 }
                 onPress={() => null}
-              />
+              /> */}
               <RoundedButton
                 text="Create Account"
                 textColor={colors.dark_grey}
